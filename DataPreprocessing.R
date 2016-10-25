@@ -35,11 +35,11 @@ for(i in index){
 trip_data <- data.frame(trip_data, coordinates, distance)
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Calculating total number of bikes checked each day
 
 # Creating smaller sample set
 statuswID234 <- status_data[status_data$station_id <= 4,]
 
-# Calculating total number of bikes checked each day
 curr_time = as.Date(statuswID234$time[4], format = "%Y-%m-%d %H:%M:%S");
 curr_available = statuswID234$bikes_available[1]
 curr_id = statuswID234$station_id[1]
@@ -85,11 +85,11 @@ total_each_day <- data.frame(station_id,day_total, each_day) #origin date : 1970
 colnames(total_each_day)[3] <- "date"
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Calculating total number of bikes checked out each hour
 
 #Creating an even smaller data set
 statuswID2 <- status_data[status_data$station_id == 2,]
 
-# Calculating total number of bikes checked out each hour
 curr_time = as.POSIXlt(statuswID2$time[1], format = "%Y-%m-%d %H:%M:%S");
 curr_available = statuswID2$bikes_available[1]
 curr_id = statuswID2$station_id[1]
@@ -191,16 +191,4 @@ for(i in index){
 SF_total_each_hour <- data.frame(station_id, hour_total, hour, day, month)
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# Model testing
-train <- 1:22902
 
-one_rent <- rep("No", dim(statuswID2)[1])
-one_rent <- ifelse(total_each_hour$hour_total > 0, "Yes", "No")
-
-total_each_hour <- data.frame(total_each_hour, one_rent)
-
-glm.fit <- glm(one_rent~hour, data = total_each_hour[train,], family = "binomial")
-glm.probs <- predict(glm.fit, newdata = total_each_hour[test,], response = "response")
-glm.pred <- ifelse(glm.probs >0.5, "Yes", "No")
-table(glm.pred, total_each_hour[test,]$one_rent)
-mean(glm.pred == total_each_hour[test,]$one_rent)
