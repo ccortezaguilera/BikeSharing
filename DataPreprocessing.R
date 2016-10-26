@@ -52,24 +52,28 @@ trip_data <- data.frame(trip_data, avg_speed)
 # Creating smaller sample set
 statuswID234 <- status_data[status_data$station_id <= 4,]
 
-curr_time = as.Date(statuswID234$time[4], format = "%Y-%m-%d %H:%M:%S");
+curr_time = as.POSIXlt(statuswID234$time[1], format = "%Y-%m-%d %H:%M:%S");
 curr_available = statuswID234$bikes_available[1]
 curr_id = statuswID234$station_id[1]
 total = 0
 
-index <- 1:dim(statuswID234)[1]
-j <- 1:(365*3)
+index <- 1:dim(status_data)[1]
+j <- 1
 
 station_id <- rep(0, dim(statuswID234)[1]/1400)
-each_day <- rep(0, dim(statuswID234)[1]/1400)
+day <- rep(0, dim(statuswID234)[1]/1400)
+month <- rep(0, dim(statuswID234)[1]/1400)
+weekday <- rep(0, dim(statuswID234)[1]/1400)
 day_total <- rep(0, dim(statuswID234)[1]/1400)
 for(i in index){
   
-  next_row_time <- as.Date(statuswID234[i,4], format = "%Y-%m-%d %H:%M:%S")
-  if(curr_id != statuswID234$station_id[i] | next_row_time > curr_time){
+  next_row_time <- as.POSIXlt(statuswID234[i,4], format = "%Y-%m-%d %H:%M:%S")
+  if(curr_id != statuswID234$station_id[i] | next_row_time$yday > curr_time$yday | next_row_time$year > curr_time$year){
     # Storing data at index j to new vectors
     station_id[j] <- curr_id
-    each_day[j] <- as.Date(curr_time, format ="%Y-%m-%d", origin = "1970-01-01")
+    weekday[j] <- curr_time$wday
+    month[j] <- curr_time$mon
+    day[j] <- curr_time$mday
     day_total[j] <- total
     
     j <- j + 1
@@ -93,8 +97,7 @@ for(i in index){
     curr_available = statuswID234$bikes_available[i]
   }
 }
-total_each_day <- data.frame(station_id,day_total, each_day) #origin date : 1970-01-01
-colnames(total_each_day)[3] <- "date"
+total_each_day <- data.frame(station_id, day_total, day, weekday, month)
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Calculating total number of bikes checked out each hour
@@ -108,7 +111,7 @@ curr_id = statuswID2$station_id[1]
 total = 0
 
 index <- 1:dim(statuswID2)[1]
-j <- 1:(dim(statuswID2)[1]/24)
+j <- 1
 
 station_id <- rep(0, dim(statuswID2)[1]/24)
 day <- rep(0, dim(statuswID2)[1]/24)
@@ -162,7 +165,7 @@ curr_id = SF_status_data$station_id[1]
 total = 0
 
 index <- 1:dim(SF_status_data)[1]
-j <- 1:(dim(SF_status_data)[1]/24)
+j <- 1
 
 station_id <- rep(0, dim(SF_status_data)[1]/24)
 day <- rep(0, dim(SF_status_data)[1]/24)
@@ -210,7 +213,7 @@ curr_id = SF_status_data$station_id[1]
 total = 0
 
 index <- 1:dim(SF_status_data)[1]
-j <- 1:dim(SF_status_data)[1]/30
+j <- 1
 
 station_id <- rep(0, dim(SF_status_data)[1]/30)
 day <- rep(0, dim(SF_status_data)[1]/30)
@@ -227,7 +230,7 @@ for(i in index){
     day[j] <- curr_time$mday
     weekday[j] <- curr_time$wday
     month[j] <- curr_time$mon
-
+    
     j <- j + 1
     # Updating variables
     total <- 0
