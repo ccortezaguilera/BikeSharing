@@ -40,9 +40,8 @@ install.packages("measurements")
 library(measurements)
 ?conv_unit
 time_diff <- as.numeric(difftime(as.POSIXlt(trip_data$End.Date, 
-                                            format = "%m/%d/%Y %H:%M"), as.POSIXlt(trip_data$Start.Date,
-                                                                                   format = "%m/%d/%Y %H:%M"),
-                                 units = "hours"))
+             format = "%m/%d/%Y %H:%M"), as.POSIXlt(trip_data$Start.Date,
+             format = "%m/%d/%Y %H:%M"), units = "hours"))
 dist_miles <- conv_unit(trip_data$distance, "m", "mi")
 avg_speed <- dist_miles/time_diff
 trip_data <- data.frame(trip_data, avg_speed)
