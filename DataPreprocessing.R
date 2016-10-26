@@ -32,7 +32,20 @@ for(i in index){
   end_pos <- c(station_data[station_data$station_id == end, 4], station_data[station_data$station_id == end, 3])
   distance[i] <- distCosine(start_pos, end_pos)
 }
-trip_data <- data.frame(trip_data, coordinates, distance)
+trip_data <- data.frame(trip_data, distance)
+
+# Calculating avg speed of each trip based on displacement
+
+install.packages("measurements")
+library(measurements)
+?conv_unit
+time_diff <- as.numeric(difftime(as.POSIXlt(trip_data$End.Date, 
+                                            format = "%m/%d/%Y %H:%M"), as.POSIXlt(trip_data$Start.Date,
+                                                                                   format = "%m/%d/%Y %H:%M"),
+                                 units = "hours"))
+dist_miles <- conv_unit(trip_data$distance, "m", "mi")
+avg_speed <- dist_miles/time_diff
+trip_data <- data.frame(trip_data, avg_speed)
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Calculating total number of bikes checked each day
