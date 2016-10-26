@@ -203,4 +203,51 @@ for(i in index){
 SF_total_each_hour <- data.frame(station_id, hour_total, hour, day, month)
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Calculating total each day in SF
+curr_time = as.POSIXlt(SF_status_data$time[1], format = "%Y-%m-%d %H:%M:%S");
+curr_available = SF_status_data$bikes_available[1]
+curr_id = SF_status_data$station_id[1]
+total = 0
+
+index <- 1:dim(SF_status_data)[1]
+j <- 1:dim(SF_status_data)[1]/30
+
+station_id <- rep(0, dim(SF_status_data)[1]/30)
+day <- rep(0, dim(SF_status_data)[1]/30)
+weekday <- rep(0, dim(SF_status_data)[1]/30)
+month <- rep(0, dim(SF_status_data)[1]/30)
+day_total <- rep(0, dim(SF_status_data)[1]/30)
+for(i in index){
+  
+  next_row_time <- as.POSIXlt(SF_status_data[i,4], format = "%Y-%m-%d %H:%M:%S")
+  if(curr_id != SF_status_data$station_id[i] | next_row_time$yday > curr_time$yday | next_row_time$year > curr_time$year){
+    # Storing data at index j to new vectors
+    station_id[j] <- curr_id
+    day_total[j] <- total
+    day[j] <- curr_time$mday
+    weekday[j] <- curr_time$wday
+    month[j] <- curr_time$mon
+
+    j <- j + 1
+    # Updating variables
+    total <- 0
+    curr_available <- SF_status_data$bikes_available[i]
+    curr_time <- next_row_time
+    curr_id <- SF_status_data$station_id[i]
+  }
+  
+  # If someone checks out a bike
+  if(curr_available > SF_status_data$bikes_available[i]){
+    
+    total = total + (curr_available - SF_status_data$bikes_available[i])
+    curr_available = SF_status_data$bikes_available[i]
+  }
+  
+  # When someone checks in a bike, total is not effected
+  else if(curr_available < SF_status_data$bikes_available[i]){
+    
+    curr_available = SF_status_data$bikes_available[i]
+  }
+}
+SF_total_each_day <- data.frame(station_id,day_total, day, weekday, month)
 
