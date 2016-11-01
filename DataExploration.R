@@ -48,3 +48,18 @@ abline(v = median(SF_trips$Start.Terminal), lwd = 2, col = "royalblue")
 hist(SF_trips$End.Terminal, xlab = "Station ID", ylab = "Number of occurences", main = "End Station stats", col = "firebrick", breaks = 42)
 abline(v = median(SF_trips$End.Terminal), lwd = 2, col = "royalblue")
 # Stations 68 & 69 are most popular
+
+dev.off()
+
+plot(SF_trips$Subscriber.Type, SF_trips$distance)
+#Outliers are evident
+which(SF_trips$distance > 20000)
+#Outliers at indexes 16804 156116 317828 320941
+
+plot(SF_trips$Subscriber.Type[-c(16804,156116,317828,320941)] ,SF_trips$distance[-c(16804,156116,317828,320941)])
+# Not much difference between Subscribers and Customers based on distance
+
+type <- ifelse(SF_trips$Subscriber.Type == "Subscriber", 1, 0)
+plot(SF_trips$Subscriber.Type[-c(16804,156116,317828,320941)] ,SF_trips$avg_speed[-c(16804,156116,317828,320941)], ylab = "MPH", main = "Customers Vs Subscribers \n based on AVG speed",
+     col = ifelse(type == 0, "goldenrod", "darkgreen"))
+# Larger difference when looking at avg_speed
