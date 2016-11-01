@@ -45,111 +45,58 @@ dist_miles <- conv_unit(trip_data$distance, "m", "mi")
 avg_speed <- dist_miles/(trip_data$Duration/60)
 trip_data <- data.frame(trip_data, dist_miles, avg_speed)
 
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# Calculating total number of bikes checked each day
-
-# Creating smaller sample set
-statuswID234 <- status_data[status_data$station_id <= 4,]
-
-curr_time = as.POSIXlt(statuswID234$time[1], format = "%Y-%m-%d %H:%M:%S");
-curr_available = statuswID234$bikes_available[1]
-curr_id = statuswID234$station_id[1]
-total = 0
-
-index <- 1:dim(status_data)[1]
-j <- 1
-
-station_id <- rep(0, dim(statuswID234)[1]/1400)
-day <- rep(0, dim(statuswID234)[1]/1400)
-month <- rep(0, dim(statuswID234)[1]/1400)
-weekday <- rep(0, dim(statuswID234)[1]/1400)
-day_total <- rep(0, dim(statuswID234)[1]/1400)
-for(i in index){
-  
-  next_row_time <- as.POSIXlt(statuswID234[i,4], format = "%Y-%m-%d %H:%M:%S")
-  if(curr_id != statuswID234$station_id[i] | next_row_time$yday > curr_time$yday | next_row_time$year > curr_time$year){
-    # Storing data at index j to new vectors
-    station_id[j] <- curr_id
-    weekday[j] <- curr_time$wday
-    month[j] <- curr_time$mon
-    day[j] <- curr_time$mday
-    day_total[j] <- total
-    
-    j <- j + 1
-    # Updating variables
-    total <- 0
-    curr_available <- statuswID234$bikes_available[i]
-    curr_time <- next_row_time
-    curr_id <- statuswID234$station_id[i]
-  }
-  
-  # If someone checks out a bike
-  if(curr_available > statuswID234$bikes_available[i]){
-    
-    total = total + (curr_available - statuswID234$bikes_available[i])
-    curr_available = statuswID234$bikes_available[i]
-  }
-  
-  # When someone checks in a bike, total is not effected
-  else if(curr_available < statuswID234$bikes_available[i]){
-    
-    curr_available = statuswID234$bikes_available[i]
-  }
-}
-total_each_day <- data.frame(station_id, day_total, day, weekday, month)
-
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Calculating total number of bikes checked out each hour
 
 #Creating an even smaller data set
-statuswID2 <- status_data[status_data$station_id == 2,]
-
-curr_time = as.POSIXlt(statuswID2$time[1], format = "%Y-%m-%d %H:%M:%S");
-curr_available = statuswID2$bikes_available[1]
-curr_id = statuswID2$station_id[1]
-total = 0
-
-index <- 1:dim(statuswID2)[1]
-j <- 1
-
-station_id <- rep(0, dim(statuswID2)[1]/24)
-day <- rep(0, dim(statuswID2)[1]/24)
-month <- rep(0, dim(statuswID2)[1]/24)
-hour <- rep(0, dim(statuswID2)[1]/24)
-hour_total <- rep(0, dim(statuswID2)[1]/24)
-for(i in index){
-  
-  next_row_time <- as.POSIXlt(statuswID2[i,4], format = "%Y-%m-%d %H:%M:%S")
-  if(curr_id != statuswID2$station_id[i] | next_row_time$min < curr_time$min){
-    # Storing data at index j to new vectors
-    station_id[j] <- curr_id
-    day[j] <- curr_time$wday
-    month[j] <- curr_time$mon
-    hour[j] <- curr_time$hour
-    hour_total[j] <- total
-    
-    j <- j + 1
-    # Updating variables
-    total <- 0
-    curr_available <- statuswID2$bikes_available[i]
-    curr_id <- statuswID2$station_id[i]
-  }
-  curr_time <- next_row_time
-  # If someone checks out a bike
-  if(curr_available > statuswID2$bikes_available[i]){
-    
-    total = total + (curr_available - statuswID2$bikes_available[i])
-    curr_available = statuswID2$bikes_available[i]
-  }
-  
-  # When someone checks in a bike, total is not effected
-  else if(curr_available < statuswID2$bikes_available[i]){
-    
-    curr_available = statuswID2$bikes_available[i]
-  }
-}
-total_each_hour <- data.frame(station_id, hour_total, hour, day, month)
-
+# statuswID2 <- status_data[status_data$station_id == 2,]
+# 
+# curr_time = as.POSIXlt(statuswID2$time[1], format = "%Y-%m-%d %H:%M:%S");
+# curr_available = statuswID2$bikes_available[1]
+# curr_id = statuswID2$station_id[1]
+# total = 0
+# 
+# index <- 1:dim(statuswID2)[1]
+# j <- 1
+# 
+# station_id <- rep(0, dim(statuswID2)[1]/24)
+# day <- rep(0, dim(statuswID2)[1]/24)
+# month <- rep(0, dim(statuswID2)[1]/24)
+# hour <- rep(0, dim(statuswID2)[1]/24)
+# hour_total <- rep(0, dim(statuswID2)[1]/24)
+# for(i in index){
+#   
+#   next_row_time <- as.POSIXlt(statuswID2[i,4], format = "%Y-%m-%d %H:%M:%S")
+#   if(curr_id != statuswID2$station_id[i] | next_row_time$min < curr_time$min){
+#     # Storing data at index j to new vectors
+#     station_id[j] <- curr_id
+#     day[j] <- curr_time$wday
+#     month[j] <- curr_time$mon
+#     hour[j] <- curr_time$hour
+#     hour_total[j] <- total
+#     
+#     j <- j + 1
+#     # Updating variables
+#     total <- 0
+#     curr_available <- statuswID2$bikes_available[i]
+#     curr_id <- statuswID2$station_id[i]
+#   }
+#   curr_time <- next_row_time
+#   # If someone checks out a bike
+#   if(curr_available > statuswID2$bikes_available[i]){
+#     
+#     total = total + (curr_available - statuswID2$bikes_available[i])
+#     curr_available = statuswID2$bikes_available[i]
+#   }
+#   
+#   # When someone checks in a bike, total is not effected
+#   else if(curr_available < statuswID2$bikes_available[i]){
+#     
+#     curr_available = statuswID2$bikes_available[i]
+#   }
+# }
+# total_each_hour <- data.frame(station_id, hour_total, hour, day, month)
+# 
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Calculating total trips each day in SF
@@ -187,6 +134,14 @@ for(i in index){
   
   next_row_time <- as.POSIXlt(SF_trips$Start.Date[i], format = "%m/%d/%Y %H:%M")
   if(next_row_time$yday != curr_time$yday | next_row_time$year != curr_time$year | i == nrow(SF_trips)){
+    
+    # There is a datapoint out of place in the trip_data set
+    # A trip dated 2014-12-12 is placed where trips are supposed to 
+    # be 2014-12-11
+    # This if statement ignores this datapoint that is out of place
+    if(next_row_time$yday > curr_time$yday & next_row_time$year == curr_time$year)
+      next
+    
     # Storing data at index j to new vectors
     day_total[j] <- total
     day[j] <- curr_time$mday
@@ -198,7 +153,7 @@ for(i in index){
     sub_dur_total[j] <- sub_dur
     cust_dur_total[j] <- cust_dur
     duration_total[j] <- dur_total
-    date[j] <- as.Date(SF_trips$Start.Date[i], format = "%m/%d/%Y")
+    date[j] <- as.Date.POSIXlt(curr_time, format = "%m/%d/%Y")
     
     j <- j + 1
     
@@ -207,6 +162,7 @@ for(i in index){
     curr_time <- next_row_time
     num_cust <- 0
     num_sub <- 0
+    dur_total <-0
     sub_dur <- 0
     cust_dur <- 0
   }
@@ -233,34 +189,22 @@ is_weekend = ifelse(SF_totals$weekday == 0 | SF_totals$weekday == 6, 1, 0)
 SF_totals <- data.frame(SF_totals, is_weekend)
 
 #~~~~~~~~~~~~~~~
-# Mergeing weather and SF_totals
+# Merging weather and SF_totals
 
 SF_weather_data <- weather_data[weather_data$Zip == 94107,]
 #Changing format to match in both datasets
 SF_weather_data$PDT <- as.Date(SF_weather_data$PDT, format = "%m/%d/%Y")
 ?merge
 
-#Mergeing on dates
-SF_daily_bikeshare <- merge(SF_totals, SF_weather_data, by = "PDT")
+# Merging on dates based on PDT
+# If SF_weather_data is missing a specific date, it will not 
+# be added to the merged data set
+SF_daily_bikeshare <- merge(SF_totals, SF_weather_data, by = "PDT", all.y  = TRUE, all.x = FALSE)
+
 
 rm(curr_time,cust_dur, cust_dur_total,cust_total, date, day, day_total,
-   dur_total, duration_total, holidays, i, index, is_weekend, j ,month, 
+   dur_total, duration_total, i, index, is_weekend, j ,month, 
    next_row_time, num_cust, num_sub, PDT, sf_IDs, sub_dur, sub_dur_total, 
    sub_total, total, weekday, year)
-#~~~~~~~~~~~~~~~~~~~~DATA EXPLORATION~~~~~~~~~~~~~~~~~~
 
-attach(SF_daily_bikeshare)
-par(mfrow = c(2,2))
-plot(weekday, sub_total, xlab = "Day of the week", ylab = "Number of rentals", main = "Subscribers", col = "skyblue")
-plot(weekday, cust_total, xlab = "Day of the week", ylab = "Number of rentals", main = "Customers", col = "slateblue4")
-plot(PDT, sub_total, col = "orange", xlab = "Month", ylab = "Number of rentals", main = "Subscribers")
-plot(PDT, cust_total, col = "darkred", xlab = "Month", ylab = "Number of rentals", main = "Customers")
 
-dev.off()
-
-par(mfrow = c(2,1))
-plot(PDT, day_total, type = 'line', col = "forestgreen", xlab = "Month", ylab = "Number of rentals", main = "Rentals each month")
-plot(PDT, Mean.TemperatureF, type = 'line', col = "red", xlab = "Month", ylab = "Temperature in F", main = "Temperature each month ")
-lines(PDT, Max.TemperatureF, col = "orange")
-lines(PDT, Min.TemperatureF, col = "lightblue")
-dev.off()
