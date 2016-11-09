@@ -12,7 +12,9 @@ par(mfrow = c(2,2))
 plot(weekday, sub_total, xlab = "Day of the week", ylab = "Number of rentals", main = "Subscribers", col = "skyblue")
 plot(weekday, cust_total, xlab = "Day of the week", ylab = "Number of rentals", main = "Customers", col = "slateblue4")
 plot(PDT, sub_total, col = ifelse(is_weekend == 1,"orange","steelblue"), xlab = "Month", ylab = "Number of rentals", main = "Subscribers")
-plot(PDT, cust_total, col = "darkred", xlab = "Month", ylab = "Number of rentals", main = "Customers")
+legend(locator(), c("Weekday", "Weekend"), col = c("steelblue", "orange"), pch = 1, cex = 0.6)
+plot(PDT, cust_total, col = ifelse(is_weekend == 1,"orange", "steelblue"), xlab = "Month", ylab = "Number of rentals", main = "Customers")
+legend(locator(), c("Weekday", "Weekend"), col = c("steelblue", "orange"), pch = 1, cex = 0.6)
 # Subscribers are more active on weekdays with customers on weekends
 # Between late Dec through early Jan there is a decrease in Subscribers
 dev.off()
@@ -22,6 +24,7 @@ plot(PDT, day_total, type = 'l', col = "forestgreen", xlab = "Month", ylab = "Nu
 plot(PDT, Mean.TemperatureF, type = 'l', col = "red", xlab = "Month", ylab = "Temperature in F", main = "Temperature each month ")
 lines(PDT, Max.TemperatureF, col = "orange")
 lines(PDT, Min.TemperatureF, col = "lightblue")
+legend(locator(), c("MaxTemp", "MeanTemp", "MinTemp"), col = c("orange", "red", "lightblue"), lty = c(1,1), cex = 0.5, bty = "n")
 # Decrease in temperature during winter time
 dev.off()
 
@@ -37,16 +40,17 @@ par(mfrow = c(2,2))
 plot(weekday, sub_dur_total/60, xlab = "Day of the week", ylab = "Duration in minutes", main = "Subscribers", col = "skyblue")
 plot(weekday[-96], cust_dur_total[-96]/60, xlab = "Day of the week", ylab = "Duration in minutes", main = "Customers", col = "slateblue4")
 plot(PDT, sub_dur_total/60, col = ifelse(is_weekend ==1,"orange", "steelblue"), xlab = "Month", ylab = "Duration in minutes", main = "Subscribers")
-plot(PDT[-96], cust_dur_total[-96]/60, col = ifelse(is_weekend == 1, "darkred", "lightblue"), xlab = "Month", ylab = "Duration in minutes", main = "Customers")
+legend(locator(), c("Weekday", "Weekend"), col = c("steelblue", "orange"), pch = 1, cex = 0.6)
+plot(PDT[-96], cust_dur_total[-96]/60, col = ifelse(is_weekend == 1, "orange", "steelblue"), xlab = "Month", ylab = "Duration in minutes", main = "Customers")
+legend(locator(), c("Weekday", "Weekend"), col = c("steelblue", "orange"), pch = 1, cex = 0.6)
+
 # Similar results as total rentals
 which.max(cust_dur_total)
 dev.off()
 
 par(mfrow = c(1, 2))
 hist(SF_trips$Start.Terminal, xlab = "Station ID", ylab = "Number of occurences", main = "Start Station Stats", col = "darkseagreen3", breaks = 42)
-abline(v = median(SF_trips$Start.Terminal), lwd = 2, col = "royalblue")
 hist(SF_trips$End.Terminal, xlab = "Station ID", ylab = "Number of occurences", main = "End Station stats", col = "firebrick", breaks = 42)
-abline(v = median(SF_trips$End.Terminal), lwd = 2, col = "royalblue")
 # Stations 68 & 69 are most popular
 
 dev.off()
