@@ -46,6 +46,16 @@ names(weather_data_201608)[24] <- "Zip"
 weather_data <- rbind(weather_data_201408, weather_data_201508, weather_data_201608)
 rm(weather_data_201408, weather_data_201608)
 
+# PrecipitationIn column values with T are measured as >0.01
+weather_data[weather_data$PrecipitationIn == "T","PrecipitationIn"] <- 0.01
+
+# Categorizing events from 0-4
+# 4 = Rain-Storm, 3 = Rain, 2 = Fog-Rain, 1 = Fog
+weather_events <- ifelse(weather_data$Events == "Rain-Thunderstorm", 4, 
+                         ifelse(weather_data$Events == "Rain" | weather_data$Events == "rain", 3,
+                         ifelse(weather_data$Events == "Fog-Rain", 2,
+                         ifelse(weather_data$Events == "Fog", 1, 0))))
+weather_data$Events <- weather_events
 # Load workspace
 ## load("DataPreprocessing.RData")
 
