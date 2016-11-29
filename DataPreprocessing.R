@@ -193,3 +193,36 @@ dist_miles <- conv_unit(trip_data$distance, "m", "mi")
 avg_speed <- dist_miles/(trip_data$Duration/60)
 trip_data <- data.frame(trip_data, dist_miles, avg_speed)
 
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~Adding Features~~~~~~~~~~~~~~~~~~~~
+# ~~~~~Adding qualitative feature value for days when a Giants home game occurs~~~~~~
+Giants_Games <- read.csv("/Users/lancefernando/Desktop/DataMining/DataSets/BayAreaBikeShareData/SF_Giants_Home_Games.csv")
+#Changing the format of the dates column
+Giants_Games$Date <- as.Date(Giants_Games$Date, format = "%m/%d/%Y") + 730485
+Game <- rep(0,1083)
+Game_with_Dates <- data.frame(Date = SF_daily_bikeshare$PDT, Game)
+for(i in 1:nrow(Giants_Games)){
+  for(j in 1:nrow(Game_with_Dates)){
+    if(Giants_Games$Date[i] == Game_with_Dates$Date[j]){
+      Game_with_Dates$Game[j] = 1
+      break
+    }
+  }
+}
+SF_daily_bikeshare <- data.frame(SF_daily_bikeshare, Giants_Game = Game_with_Date$Game)
+
+#~~~~~~~Adding qualitative feature value for days when a large SF event occurs that
+#~~~~~~~may effect bicycle travel. 1 is SF Sunday events. 2 is SF Bike to work days
+SF_events <- read.csv("/Users/lancefernando/Desktop/DataMining/DataSets/BayAreaBikeShareData/SF_Events.csv")
+SF_events$Date <- as.Date(SF_events$Date, format = "%m/%d/%Y") + 730485
+Event <- rep(0, 1083)
+Event_with_Dates <- data.frame(Date = SF_daily_bikeshare$PDT, Event)
+for(i in 1:nrow(SF_events)){
+  for(j in 1:nrow(Event_with_Dates)){
+    if(SF_events$Date[i] == Event_with_Dates$Date[j]){
+      Event_with_Dates$Event[j] = SF_events$Event[i]
+      break
+    }
+  }
+}
+SF_daily_bikeshare <- data.frame(SF_daily_bikeshare, SF_Event = Event_with_Dates$Event)

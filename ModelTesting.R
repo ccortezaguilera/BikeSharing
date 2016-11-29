@@ -131,7 +131,7 @@ cv_error$delta[1]
 
 #~~~~~~~~~~~~~~~~~~~~~~~USING REGRESSION TREES~~~~~~~~~~~~~~~~~~~~~~~
 library(tree)
-tree.bikes <- tree(day_total~.-Zip-PDT-sub_total-cust_total, data = SF_daily_bikeshare, subset = train)
+tree.bikes <- tree(day_total~.-Zip-PDT-sub_total-cust_total-PrecipitationIn, data = SF_daily_bikeshare, subset = train)
 summary(tree.bikes)
 plot(tree.bikes)
 text(tree.bikes)
@@ -156,18 +156,18 @@ mean((yhat.prune - bikes.test)^2)
 
 ## Using Bagging Trees
 library(randomForest)
-bag.bikes <- randomForest(day_total~.-Zip-PDT-sub_total-cust_total, data = SF_daily_bikeshare ,subset =train, mtry= 29, importance =TRUE)
+bag.bikes <- randomForest(day_total~.-Zip-PDT-sub_total-cust_total-PrecipitationIn, data = SF_daily_bikeshare ,subset =train, mtry= 29, importance =TRUE)
 bag.bikes
 yhat.bag <- predict(bag.bikes, newdata = SF_daily_bikeshare[-train,])
 plot(yhat.bag, bikes.test)
-abline(0,1)
+abline(0,1, col = "red")
 mean((yhat.bag - bikes.test)^2)
 importance(bag.bikes)
 varImpPlot(bag.bikes) # High values in matrix are good.
-# MSE of 4886.03
+# MSE of 4884.98
 
 ## Using Random forest
-rf.bikes <- randomForest(day_total~.-Zip-PDT-sub_total-cust_total, 
+rf.bikes <- randomForest(day_total~.-Zip-PDT-sub_total-cust_total-PrecipitationIn, 
                          data = SF_daily_bikeshare, subset = train, 
                          mtry = 5, ntree = 100, importance = TRUE)
 rf.bikes
@@ -175,32 +175,36 @@ yhat.rf <- predict(rf.bikes, newdata = SF_daily_bikeshare[-train,])
 plot(yhat.rf, bikes.test)
 abline(0,1, col = "red")
 mean((yhat.rf - bikes.test)^2)
-# MSE of 4766.72
+# MSE of 4656.236
 
 ## Running random forest on sub_total and cur_total
 
 # sub_total
-rf.sub_bikes <- randomForest(sub_total~.-Zip-PDT-day_total-cust_total, 
+rf.sub_bikes <- randomForest(sub_total~.-Zip-PDT-day_total-cust_total-PrecipitationIn, 
                          data = SF_daily_bikeshare, subset = train, 
                          mtry = 5, ntree = 100, importance = TRUE)
 rf.sub_bikes
-yhat.rf <- predict(rf.sub_bikes, newdata = SF_daily_bikeshare[-train,])
+yhat.rf.sub <- predict(rf.sub_bikes, newdata = SF_daily_bikeshare[-train,])
 sub_bikes.test <- SF_daily_bikeshare$sub_total[-train]
 plot(yhat.rf, sub_bikes.test)
 abline(0,1, col = "red")
-mean((yhat.rf - sub_bikes.test)^2)
-# MSE 3627.051
+mean((yhat.rf.sub - sub_bikes.test)^2)
+# MSE 3825.983
 
-rf.cust_bikes <- randomForest(cust_total~.-Zip-PDT-sub_total-day_total, 
+rf.cust_bikes <- randomForest(cust_total~.-Zip-PDT-sub_total-day_total-PrecipitationIn, 
                          data = SF_daily_bikeshare, subset = train, 
                          mtry = 5, ntree = 100, importance = TRUE)
 rf.cust_bikes
 cust_bikes.test <- SF_daily_bikeshare$cust_total[-train]
-yhat.rf <- predict(rf.cust_bikes, newdata = SF_daily_bikeshare[-train,])
+yhat.rf.cust <- predict(rf.cust_bikes, newdata = SF_daily_bikeshare[-train,])
 plot(yhat.rf, cust_bikes.test)
 abline(0,1, col = "red")
-mean((yhat.rf - cust_bikes.test)^2)
-# MSE 875.461
+mean((yhat.rf.cust - cust_bikes.test)^2)
+# MSE 832.3284
+
+# Summing prediction of customers and subscribers to predict actual totals
+mean(((yhat.rf.sub+yhat.rf.cust) - bikes.test)^2)
+# MSE 4531.033
 
 ## ~~~~~~~~~~~~~~~RUNNING FEATURE SELECTION METHODS~~~~~~~~~~~~~~~~~~~~~~~~
 library(leaps)
