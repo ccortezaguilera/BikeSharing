@@ -136,16 +136,20 @@ for(i in index){
   }
 }
 
-#date is in numeric form with origin 1970-01-01
+#date is in numeric form with origin 3970-01-01
 #converting it to readable format
 PDT <- as.Date(date, origin = "3970-01-01")
 is_weekend <- ifelse(weekday == 0 | weekday == 6, 1, 0)
-SF_totals <- data.frame(PDT, day_total, sub_total, cust_total, duration_total, sub_dur_total, cust_dur_total,is_weekend, day, weekday, month)
+SF_totals <- data.frame(PDT, day_total, sub_total, cust_total, duration_total, sub_dur_total, cust_dur_total,is_weekend, day, weekday, month, year)
 
 #~~~~~~~~~~~~~~~
 # Merging weather and SF_totals
 
 SF_weather_data <- weather_data[weather_data$Zip == 94107,]
+
+# Removing Zip code column
+SF_weather_data <-SF_weather_data[,-24]
+
 #Changing format to match in both datasets
 SF_weather_data$PDT <- as.Date(SF_weather_data$PDT, format = "%m/%d/%Y")
 
