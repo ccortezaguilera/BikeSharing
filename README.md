@@ -36,7 +36,7 @@ Event column values:
 SF_Giants_Home_Games.csv
 Dates when the San Francisco Giants baseball team has a home game. SF Muni recommends attendees use public transportation such as Bike Share to get to the games.
 
-~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Datasets used:
 
 Bay Area Bike Share Data is downloaded from this website:
@@ -51,7 +51,7 @@ http://www.sundaystreetssf.com
 San Francisco Gas Pricing Data found here:
 https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=EMM_EPM0_PTE_Y05SF_DPG&f=W
 
-~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Packages used: tree, boot, randomForest, leaps, (optional: geosphere, measurements)
 
