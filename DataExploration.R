@@ -30,7 +30,28 @@ plot(PDT, duration_total/60, xlab = "Month", ylab = "Duration in minutes", main 
 # Notice the outlier
 dev.off()
 
-which.max(duration_total)#clear outlier where duration is about 173.5 days at index 96
+which.max(duration_total)#clear outlier where duration at index 457
+SF_daily_bikeshare[which.max(duration_total), "duration_total"]
+SF_daily_bikeshare <- SF_daily_bikeshare[-457,] # Removing outlier
+
+attach(SF_daily_bikeshare)
+
+par(mfrow = c(1,2))
+plot(weekday, duration_total/60, xlab = "Day of the week", ylab= "Duration in minutes", main = "Duration totals per day", col = "slateblue")
+plot(PDT, duration_total/60, xlab = "Month", ylab = "Duration in minutes", main = "Duration totals throughout the year", col = "firebrick")
+# Notice another outlier
+
+which.max(duration_total)#clear outlier where duration at index 655
+SF_daily_bikeshare[which.max(duration_total), "duration_total"]
+SF_daily_bikeshare <- SF_daily_bikeshare[-655,] # Removing outlier
+
+attach(SF_daily_bikeshare)
+
+par(mfrow = c(1,2))
+plot(weekday, duration_total/60, xlab = "Day of the week", ylab= "Duration in minutes", main = "Duration totals per day", col = "slateblue")
+plot(PDT, duration_total/60, xlab = "Month", ylab = "Duration in minutes", main = "Duration totals throughout the year", col = "firebrick")
+# Outliers removed
+
 
 par(mfrow = c(2,2))
 plot(weekday, sub_dur_total/60, xlab = "Day of the week", ylab = "Duration in minutes", main = "Subscribers", col = "skyblue")
@@ -40,10 +61,8 @@ legend(locator(), c("Weekday", "Weekend"), col = c("steelblue", "orange"), pch =
 plot(PDT[-96], cust_dur_total[-96]/60, col = ifelse(is_weekend == 1, "orange", "steelblue"), xlab = "Month", ylab = "Duration in minutes", main = "Customers")
 legend(locator(), c("Weekday", "Weekend"), col = c("steelblue", "orange"), pch = 1, cex = 0.6)
 
-# Similar results as total rentals
-which.max(cust_dur_total)
-dev.off()
 
+# ~~ Analyzing docking popularity
 par(mfrow = c(1, 2))
 hist(SF_trips$Start.Terminal, xlab = "Station ID", ylab = "Number of occurences", main = "Start Station Stats", col = "darkseagreen3", breaks = 42)
 hist(SF_trips$End.Terminal, xlab = "Station ID", ylab = "Number of occurences", main = "End Station stats", col = "firebrick", breaks = 42)

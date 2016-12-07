@@ -18,7 +18,7 @@ Any analysis of distances or speed will not work if using all three years of dat
 This was done when analyzing only on year’s worth of data. The addition, loss and change of stations make it difficult to analyze distance or speed of trips.
 
 ModelTesting.R
-This file contains three rounds worth of modeling. If using full three years of data, only Round 3 of modeling will work as the previous rounds were used with different data.
+This file contains three rounds worth of modeling. Only run the Round 3 Model Testing script (starting on line 280) with the SF_daily_bikeshare_dataset.RData dataset.
 Feature selection script is included but not utilized in the testing of models as they gave a higher MSE than if using all variables.
 Results are plotted to assess the MSE of different models. 
 
