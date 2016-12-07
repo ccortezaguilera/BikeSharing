@@ -37,6 +37,22 @@ SF_Giants_Home_Games.csv
 Dates when the San Francisco Giants baseball team has a home game. SF Muni recommends attendees use public transportation such as Bike Share to get to the games.
 
 ~~~~~~~~~~~~~~~~~~~~
+Datasets
+
+Bay Area Bike Share Data is downloaded from this website:
+http://www.bayareabikeshare.com
+
+San Francisco Giants Data can be found here:
+http://sanfrancisco.giants.mlb.com/schedule/sortable.jsp?c_id=sf
+
+San Francisco Sunday Streets Data found here:
+http://www.sundaystreetssf.com
+
+San Francisco Gas Pricing Data found here:
+https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=EMM_EPM0_PTE_Y05SF_DPG&f=W
+
+~~~~~~~~~~~~~~~~~~~~
+
 Packages used: tree, boot, randomForest, leaps, (optional: geosphere, measurements)
 
 Authors: Carlos Cortez-Aguilera, Lance Fernando
