@@ -1,0 +1,398 @@
+Date,Opponent,Result
+9/5/13,D-backs,0
+9/6/13,D-backs,1
+9/7/13,D-backs,0
+9/8/13,D-backs,1
+9/9/13,Rockies,1
+9/10/13,Rockies,0
+9/11/13,Rockies,1
+9/24/13,Dodgers,0
+9/25/13,Dodgers,1
+9/26/13,Dodgers,1
+9/27/13,Padres,1
+9/28/13,Padres,0
+9/29/13,Padres,1
+4/8/14,D-backs,1
+4/9/14,D-backs,0
+4/10/14,D-backs,0
+4/11/14,Rockies,1
+4/12/14,Rockies,0
+4/13/14,Rockies,1
+4/15/14,Dodgers,1
+4/16/14,Dodgers,1
+4/17/14,Dodgers,0
+4/25/14,Indians,1
+4/26/14,Indians,1
+4/27/14,Indians,1
+4/28/14,Padres,0
+4/29/14,Padres,1
+4/30/14,Padres,1
+5/12/14,Braves,1
+5/13/14,Braves,0
+5/14/14,Braves,1
+5/15/14,Marlins,1
+5/16/14,Marlins,0
+5/17/14,Marlins,0
+5/18/14,Marlins,1
+5/23/14,Twins,1
+5/24/14,Twins,1
+5/25/14,Twins,1
+5/26/14,Cubs,0
+5/27/14,Cubs,1
+5/28/14,Cubs,1
+6/6/14,Mets,1
+6/7/14,Mets,1
+6/8/14,Mets,1
+6/9/14,Nationals,0
+6/10/14,Nationals,0
+6/11/14,Nationals,0
+6/12/14,Nationals,1
+6/13/14,Rockies,0
+6/14/14,Rockies,0
+6/15/14,Rockies,0
+6/23/14,Padres,0
+6/24/14,Padres,0
+6/25/14,Padres,1
+6/26/14,Reds,0
+6/27/14,Reds,0
+6/28/14,Reds,0
+6/29/14,Reds,0
+7/1/14,Cardinals,1
+7/2/14,Cardinals,0
+7/3/14,Cardinals,0
+7/9/14,Athletics,1
+7/10/14,Athletics,0
+7/11/14,D-backs,1
+7/12/14,D-backs,0
+7/13/14,D-backs,1
+7/25/14,Dodgers,0
+7/26/14,Dodgers,0
+7/27/14,Dodgers,0
+7/28/14,Pirates,0
+7/29/14,Pirates,0
+7/30/14,Pirates,1
+8/12/14,White Sox,0
+8/13/14,White Sox,1
+8/15/14,Phillies,0
+8/16/14,Phillies,1
+8/17/14,Phillies,1
+8/25/14,Rockies,0
+8/26/14,Rockies,1
+8/27/14,Rockies,1
+8/28/14,Rockies,1
+8/29/14,Brewers,1
+8/30/14,Brewers,1
+8/31/14,Brewers,1
+9/9/14,D-backs,1
+9/10/14,D-backs,1
+9/11/14,D-backs,1
+9/12/14,Dodgers,1
+9/13/14,Dodgers,0
+9/14/14,Dodgers,0
+9/25/14,Padres,1
+9/26/14,Padres,0
+9/27/14,Padres,1
+9/28/14,Padres,1
+10/6/14,Nationals,0
+10/7/14,Nationals,1
+10/14/14,Cardinals,1
+10/15/14,Cardinals,1
+10/16/14,Cardinals,1
+10/24/14,Royals,0
+10/25/14,Royals,1
+10/26/14,Royals,1
+4/6/15,at D-backs,1
+4/7/15,at D-backs,0
+4/8/15,at D-backs,1
+4/9/15,at Padres,1
+4/10/15,at Padres,0
+4/11/15,at Padres,0
+4/12/15,at Padres,0
+4/13/15,Rockies,0
+4/14/15,Rockies,0
+4/15/15,Rockies,0
+4/16/15,D-backs,0
+4/17/15,D-backs,0
+4/18/15,D-backs,1
+4/19/15,D-backs,0
+4/21/15,Dodgers,1
+4/22/15,Dodgers,1
+4/23/15,Dodgers,1
+4/24/15,at Rockies,0
+4/25/15,at Rockies,1
+4/26/15,at Rockies,0
+4/27/15,at Dodgers,0
+4/28/15,at Dodgers,1
+4/29/15,at Dodgers,0
+5/1/15,Angels,1
+5/2/15,Angels,1
+5/3/15,Angels,1
+5/4/15,Padres,1
+5/5/15,Padres,1
+5/6/15,Padres,0
+5/7/15,Marlins,0
+5/8/15,Marlins,1
+5/9/15,Marlins,0
+5/10/15,Marlins,1
+5/12/15,at Astros,1
+5/13/15,at Astros,0
+5/14/15,at Reds,0
+5/15/15,at Reds,1
+5/16/15,at Reds,1
+5/17/15,at Reds,1
+5/19/15,Dodgers,1
+5/20/15,Dodgers,1
+5/21/15,Dodgers,1
+5/22/15,at Rockies,1
+5/23/15,at Rockies,1
+5/23/15,at Rockies,0
+5/24/15,at Rockies,0
+5/25/15,at Brewers,1
+5/26/15,at Brewers,1
+5/27/15,at Brewers,1
+5/28/15,Braves,1
+5/29/15,Braves,1
+5/30/15,Braves,0
+5/31/15,Braves,0
+6/1/15,Pirates,0
+6/2/15,Pirates,0
+6/3/15,Pirates,0
+6/5/15,at Phillies,1
+6/6/15,at Phillies,1
+6/7/15,at Phillies,0
+6/9/15,at Mets,1
+6/10/15,at Mets,1
+6/11/15,at Mets,0
+6/12/15,D-backs,0
+6/13/15,D-backs,0
+6/14/15,D-backs,0
+6/15/15,Mariners,0
+6/16/15,Mariners,1
+6/17/15,at Mariners,0
+6/18/15,at Mariners,1
+6/19/15,at Dodgers,1
+6/20/15,at Dodgers,1
+6/21/15,at Dodgers,0
+6/23/15,Padres,0
+6/24/15,Padres,1
+6/25/15,Padres,1
+6/26/15,Rockies,0
+6/27/15,Rockies,1
+6/28/15,Rockies,1
+6/30/15,at Marlins,0
+7/1/15,at Marlins,0
+7/2/15,at Marlins,0
+7/3/15,at Nationals,0
+7/4/15,at Nationals,0
+7/5/15,at Nationals,0
+7/6/15,Mets,0
+7/7/15,Mets,1
+7/8/15,Mets,0
+7/10/15,Phillies,1
+7/11/15,Phillies,1
+7/12/15,Phillies,1
+7/17/15,at D-backs,1
+7/18/15,at D-backs,1
+7/19/15,at D-backs,1
+7/20/15,at Padres,0
+7/21/15,at Padres,1
+7/22/15,at Padres,1
+7/24/15,Athletics,1
+7/25/15,Athletics,1
+7/26/15,Athletics,1
+7/27/15,Brewers,1
+7/28/15,Brewers,0
+7/29/15,Brewers,1
+7/31/15,at Rangers,0
+8/1/15,at Rangers,1
+8/2/15,at Rangers,0
+8/3/15,at Braves,0
+8/4/15,at Braves,1
+8/5/15,at Braves,1
+8/6/15,at Cubs,0
+8/7/15,at Cubs,0
+8/8/15,at Cubs,0
+8/9/15,at Cubs,0
+8/11/15,Astros,1
+8/12/15,Astros,0
+8/13/15,Nationals,1
+8/14/15,Nationals,1
+8/15/15,Nationals,1
+8/16/15,Nationals,1
+8/17/15,at Cardinals,0
+8/18/15,at Cardinals,1
+8/19/15,at Cardinals,0
+8/20/15,at Pirates,0
+8/21/15,at Pirates,1
+8/22/15,at Pirates,0
+8/23/15,at Pirates,0
+8/25/15,Cubs,0
+8/26/15,Cubs,1
+8/27/15,Cubs,1
+8/28/15,Cardinals,1
+8/29/15,Cardinals,0
+8/30/15,Cardinals,0
+8/31/15,at Dodgers,0
+9/1/15,at Dodgers,0
+9/2/15,at Dodgers,0
+9/3/15,at Rockies,0
+9/4/15,at Rockies,0
+9/5/15,at Rockies,1
+9/6/15,at Rockies,1
+9/7/15,at D-backs,0
+9/8/15,at D-backs,1
+9/9/15,at D-backs,0
+9/11/15,Padres,1
+9/12/15,Padres,1
+9/13/15,Padres,1
+9/14/15,Reds,1
+9/15/15,Reds,0
+9/16/15,Reds,1
+9/18/15,D-backs,0
+9/19/15,D-backs,0
+9/20/15,D-backs,1
+9/22/15,at Padres,1
+9/23/15,at Padres,0
+9/24/15,at Padres,0
+9/25/15,at Athletics,0
+9/26/15,at Athletics,1
+9/27/15,at Athletics,1
+9/28/15,Dodgers,1
+9/29/15,Dodgers,0
+9/30/15,Dodgers,1
+10/1/15,Dodgers,0
+10/2/15,Rockies,0
+10/3/15,Rockies,1
+10/4/15,Rockies,0
+4/4/16,at Brewers,1
+4/5/16,at Brewers,1
+4/6/16,at Brewers,0
+4/7/16,Dodgers,1
+4/8/16,Dodgers,1
+4/9/16,Dodgers,0
+4/10/16,Dodgers,1
+4/12/16,at Rockies,1
+4/13/16,at Rockies,0
+4/14/16,at Rockies,0
+4/15/16,at Dodgers,0
+4/16/16,at Dodgers,1
+4/17/16,at Dodgers,0
+4/18/16,D-backs,0
+4/19/16,D-backs,0
+4/20/16,D-backs,0
+4/21/16,D-backs,0
+4/22/16,Marlins,1
+4/23/16,Marlins,1
+4/24/16,Marlins,0
+4/25/16,Padres,1
+4/26/16,Padres,1
+4/27/16,Padres,1
+4/29/16,at Mets,0
+4/30/16,at Mets,0
+5/1/16,at Mets,1
+5/2/16,at Reds,1
+5/3/16,at Reds,1
+5/4/16,at Reds,0
+5/5/16,Rockies,0
+5/6/16,Rockies,1
+5/7/16,Rockies,1
+5/8/16,Rockies,0
+5/9/16,Blue Jays,0
+5/10/16,Blue Jays,0
+5/11/16,Blue Jays,1
+5/12/16,at D-backs,1
+5/13/16,at D-backs,1
+5/14/16,at D-backs,1
+5/15/16,at D-backs,1
+5/17/16,at Padres,1
+5/18/16,at Padres,1
+5/19/16,at Padres,1
+5/20/16,Cubs,0
+5/21/16,Cubs,1
+5/22/16,Cubs,1
+5/23/16,Padres,1
+5/24/16,Padres,1
+5/25/16,Padres,1
+5/27/16,at Rockies,0
+5/28/16,at Rockies,1
+5/29/16,at Rockies,1
+5/30/16,at Braves,0
+5/31/16,at Braves,1
+6/1/16,at Braves,0
+6/2/16,at Braves,1
+6/3/16,at Cardinals,1
+6/4/16,at Cardinals,0
+6/5/16,at Cardinals,0
+6/7/16,Red Sox,0
+6/8/16,Red Sox,1
+6/10/16,Dodgers,0
+6/11/16,Dodgers,1
+6/12/16,Dodgers,1
+6/13/16,Brewers,1
+6/14/16,Brewers,1
+6/15/16,Brewers,1
+6/17/16,at Rays,1
+6/18/16,at Rays,1
+6/19/16,at Rays,1
+6/20/16,at Pirates,0
+6/21/16,at Pirates,1
+6/22/16,at Pirates,1
+6/23/16,at Pirates,1
+6/24/16,Phillies,1
+6/25/16,Phillies,0
+6/26/16,Phillies,1
+6/27/16,Athletics,0
+6/28/16,Athletics,0
+6/29/16,at Athletics,0
+6/30/16,at Athletics,1
+7/1/16,at D-backs,1
+7/2/16,at D-backs,0
+7/3/16,at D-backs,1
+7/4/16,Rockies,1
+7/5/16,Rockies,0
+7/6/16,Rockies,1
+7/8/16,D-backs,1
+7/9/16,D-backs,1
+7/10/16,D-backs,1
+7/15/16,at Padres,0
+7/16/16,at Padres,0
+7/17/16,at Padres,0
+7/19/16,at Red Sox,0
+7/20/16,at Red Sox,0
+7/22/16,at Yankees,0
+7/23/16,at Yankees,1
+7/24/16,at Yankees,0
+7/25/16,Reds,0
+7/26/16,Reds,1
+7/27/16,Reds,0
+7/28/16,Nationals,0
+7/29/16,Nationals,0
+7/30/16,Nationals,1
+7/31/16,Nationals,1
+8/2/16,at Phillies,0
+8/3/16,at Phillies,0
+8/4/16,at Phillies,1
+8/5/16,at Nationals,0
+8/6/16,at Nationals,1
+8/7/16,at Nationals,0
+8/8/16,at Marlins,1
+8/9/16,at Marlins,0
+8/10/16,at Marlins,1
+8/12/16,Orioles,0
+8/13/16,Orioles,1
+8/14/16,Orioles,0
+8/15/16,Pirates,0
+8/16/16,Pirates,0
+8/17/16,Pirates,0
+8/18/16,Mets,1
+8/19/16,Mets,1
+8/20/16,Mets,0
+8/21/16,Mets,0
+8/23/16,at Dodgers,0
+8/24/16,at Dodgers,0
+8/25/16,at Dodgers,1
+8/26/16,Braves,1
+8/27/16,Braves,0
+8/28/16,Braves,1
+8/30/16,D-backs,0
+8/31/16,D-backs,1

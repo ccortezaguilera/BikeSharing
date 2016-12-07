@@ -278,7 +278,7 @@ SF_trips <- data.frame(SF_trips, distance)
 
 # Calculating avg speed of each trip based on displacement
 
-install.packages("measurements")
+#install.packages("measurements")
 library(measurements)
 ?conv_unit
 
