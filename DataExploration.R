@@ -3,10 +3,6 @@ load("/Users/lancefernando/Desktop/DataMining/DataSets/BayAreaBikeShareData/Data
 
 attach(SF_daily_bikeshare)
 summary(SF_daily_bikeshare)
-pairs(~PDT+duration_total+sub_dur_total+cust_dur_total+day_total+
-        sub_total+cust_total+Mean.TemperatureF+Mean.Humidity+
-        Mean.Wind.SpeedMPH+Mean.VisibilityMiles+ is_weekend + 
-        day + weekday + WindDirDegrees + PrecipitationIn)
 
 par(mfrow = c(2,2))
 plot(weekday, sub_total, xlab = "Day of the week", ylab = "Number of rentals", main = "Subscribers", col = "skyblue")
